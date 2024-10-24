@@ -1,0 +1,68 @@
+plugins {
+    id "com.android.application"
+    id "kotlin-android"
+    // The Flutter Gradle Plugin must be applied after the Android and Kotlin Gradle plugins.
+    id "dev.flutter.flutter-gradle-plugin"
+}
+
+android {
+    namespace = "com.example.test_22_10_2024"
+    compileSdk = flutter.compileSdkVersion
+    ndkVersion = flutter.ndkVersion
+
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_1_8
+        targetCompatibility = JavaVersion.VERSION_1_8
+    }
+
+    kotlinOptions {
+        jvmTarget = JavaVersion.VERSION_1_8
+    }
+
+    defaultConfig {
+        // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
+        applicationId = "com.example.test_22_10_2024"
+        // You can update the following values to match your application needs.
+        // For more information, see: https://flutter.dev/to/review-gradle-config.
+        minSdk = flutter.minSdkVersion
+        targetSdk = flutter.targetSdkVersion
+        versionCode = flutter.versionCode
+        versionName = flutter.versionName
+    }
+
+    buildTypes {
+        release {
+            // TODO: Add your own signing config for the release build.
+            // Signing with the debug keys for now, so `flutter run --release` works.
+            signingConfig = signingConfigs.debug
+        }
+    }
+
+    flavorDimensions "app"
+    productFlavors {
+        dev {
+            resValue "string", "app_name", "Soul Train Dev"
+            resValue "string", "app_link", "bvb0g.test-app.link"
+            resValue "string", "app_link_alternate", "bvb0g-alternate.test-app.link"
+            resValue "string", "referral_link", "referral-test.soultrain.app"
+
+            resValue "string", "branchIoKey", "key_test_pyf1ggPIZ3dnKNWSwQ2K0fkeFueOpDv1"
+            resValue "bool", "branchIoTestMode", "true"
+
+            applicationIdSuffix ".dev"
+        }
+        prod {
+            resValue "string", "app_name", "Soul Train"
+            resValue "string", "app_link", "bvb0g.app.link"
+            resValue "string", "app_link_alternate", "bvb0g-alternate.app.link"
+            resValue "string", "referral_link", "referral.soultrain.app"
+
+            resValue "string", "branchIoKey", "key_live_kxlYdkTK05bdUR6RDTXS3kecqFoOiyEG"
+            resValue "bool", "branchIoTestMode", "false"
+        }
+    }
+}
+
+flutter {
+    source = "../.."
+}
